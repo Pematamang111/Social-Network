@@ -1,4 +1,4 @@
-const { Schema, model } = require('Schema');
+const { Schema, model } = require('mongoose');
 
 const thoughtSchema = new Schema(
     {
@@ -12,10 +12,12 @@ const thoughtSchema = new Schema(
             type: Date,
             default: Date.now,//use getter method to format timestamp
            },
-           username: {//the user that created this thought 
-            type: String,
-            required: true,
-           },
+           username: [
+            {//the user that created this thought 
+            type: Schema.DataTypes.ObjectId,
+            ref: 'user',
+           }
+        ],
            reactions: [reactionSchema],
 },
 {
@@ -33,6 +35,6 @@ thoughtSchema
     return this.thoughtText; //retrieves the length of the thought's reactions array field on query.
 })
 
-const Thought = model('Thought', thoughtSchema);
+const Thought = model('thought', thoughtSchema);
 
 module.exports = Thought;
