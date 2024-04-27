@@ -1,23 +1,14 @@
 const router = require('express').Router();
+const { getAllUsers, getUserById, addNewUser, updateUser, deleteUser} = require('../../controllers/userController');
 
-router.get('/', async (req, res) => {
-    res.send('Get users');
-})
+router.get('/', getAllUsers);
 
-router.get('/:userId', async (req, res) => {
-    res.send('get user by id')
-})
+router.get('/:userId', getUserById);
 
-router.post('/', async (req, res) => {
-    res.send('Posted new user');
-})
+router.post('/', addNewUser);
 
-router.put('/:userId', async (req, res) => {
-    res.send('updated user');
-})
+router.put('/:userId', updateUser);
 
-router.delete('/:userId', async (req, res) => {
-    res.send('deleted user');
-})
+router.delete('/:userId', deleteUser);
 
 module.exports = router;
