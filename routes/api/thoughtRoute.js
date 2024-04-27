@@ -1,22 +1,14 @@
 const router = require('express').Router();
+const { getAllThoughts, getThoughtById, addNewThought, updateThought, deleteThought } = require('../../controllers/thoughtController');
 
-router.get('/', async (req, res) => {
-    res.send('Got Home route');
-})
+router.get('/', getAllThoughts);
 
-router.get('/:userId', async (req, res) =>{
-    res.send('thought by id');
-})
+router.get('/:thoughtId', getThoughtById);
 
-router.post('/', async (req, res) => {
-    res.send('created thought');
-})
+router.post('/', addNewThought);
 
-router.put('/:userId', async (req, res) => {
-    res.send('updated!')
-})
+router.put('/:thoughtId', updateThought);
 
-router.delete('/:id', async (req, res) => {
-    res.send('deleted thought');
-})
+router.delete('/:thoughtid', deleteThought);
+
 module.exports = router;
