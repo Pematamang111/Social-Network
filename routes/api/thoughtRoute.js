@@ -1,5 +1,7 @@
+//importing router from express to handle routes
 const router = require('express').Router();
-const { getAllThoughts, getThoughtById, addNewThought, updateThought, deleteThought } = require('../../controllers/thoughtController');
+//These are thought routes
+const { getAllThoughts, getThoughtById, addNewThought, updateThought, deleteThought, removeReaction } = require('../../controllers/thoughtController');
 
 router.get('/', getAllThoughts);
 
@@ -10,5 +12,7 @@ router.post('/', addNewThought);
 router.put('/:thoughtId', updateThought);
 
 router.delete('/:thoughtid', deleteThought);
+
+router.delete('/:thoughtId', removeReaction);
 
 module.exports = router;

@@ -1,5 +1,7 @@
+//importing schema and types from mongoose
 const { Schema, Types } = require('mongoose');
 
+//new schema for reaction
 const reactionSchema = new Schema(
     {
         reactionId: {

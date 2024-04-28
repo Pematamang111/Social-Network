@@ -1,6 +1,8 @@
+//importing schema and model from mongoose
 const { Schema, model } = require('mongoose');
 const Thought = require('./thought');
 
+// new schema for user
 const userSchema = new Schema(
     {
         username: {
@@ -13,7 +15,7 @@ const userSchema = new Schema(
             type: String,
             required: 'Email address is required',
             unique: true,
-            match: [`/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/`, 'Please fill a valid email address'],
+            match: [/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/, 'Please fill a valid email address'],
         },
         thoughts: [
              {
