@@ -1,5 +1,7 @@
 const { Schema, model } = require('mongoose');
+const reactionSchema = require('./reaction');
 
+//new schema of thought
 const thoughtSchema = new Schema(
     {
            thoughtText: {
@@ -10,11 +12,11 @@ const thoughtSchema = new Schema(
            },
            createdAt: {
             type: Date,
-            default: Date.now,//use getter method to format timestamp
+            default: Date.now,//using getter method to format timestamp
            },
-           username: [
+           user: [
             {//the user that created this thought 
-            type: Schema.DataTypes.ObjectId,
+            type: Schema.Types.ObjectId,
             ref: 'user',
            }
         ],
