@@ -70,7 +70,7 @@ module.exports = {
         try {
                const thought = await Thought.findOneAndRemove(
                 { _id: req.params.thoughtId },
-                { $pull: thought.reactions },
+                { $pull: { reactions: { reactionId: req.params.reactionId } } },
                 { new: true }
                )
     
