@@ -20,7 +20,6 @@ connection.once('open', async() => {
     //to seed we need to create 
     const userData = await User.create(users);
        const getUsers = await User.find();
-         res.json(getUsers);
        const [ user1, user2 ] = getUsers;
     //updating user1
         await User.findOneAndUpdate(
@@ -33,8 +32,7 @@ connection.once('open', async() => {
     
     const thoughtData = await Thought.create(thoughts);
 
-    const getThought = await Thought.find();
-        res.json(getThought);   
+    await Thought.find();
 
        await Thought.findOneAndUpdate(
         { _id: user1._id }, 
