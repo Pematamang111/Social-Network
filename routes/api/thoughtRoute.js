@@ -13,6 +13,6 @@ router.put('/:thoughtId', updateThought);
 
 router.delete('/:thoughtid', deleteThought);
 
-router.delete('/:thoughtId', removeReaction);
+router.delete('/:thoughtId/reactions/reactionId', removeReaction);
 
 module.exports = router;

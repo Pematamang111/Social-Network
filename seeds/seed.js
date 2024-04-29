@@ -24,13 +24,15 @@ connection.once('open', async() => {
      
     const thoughtData = await Thought.create(thoughts);
 
-    await Thought.find();
+    const getThought = await Thought.find();
+
+    const [ thought1 ] = getThought;
 
     //updating user1
     await User.findOneAndUpdate(
         { _id: user1._id }, 
-        { $push: { friends: user2._id } },
-        { $addToSet: { thoughts: {thoughtText: 'Probably will cook chicken curry sometime'} } },
+        //{ $push: { friends: user2._id, thoughts: thought1._id } },
+        { $addToSet: { friends: user2._id, thoughts: thought1._id } },
 
        )
 
@@ -44,7 +46,7 @@ connection.once('open', async() => {
      await User.findOneAndUpdate(
         { _id: user2._id }, 
         { $push: { friends: user1._id } },
-        { $addToSet: { thoughts: {thoughtText: 'Probably will cook fish curry sometime'} } },
+       // { $addToSet: { thoughts: {thoughtText: 'Probably will cook fish curry sometime'} } },
      )  
 
     console.table(thoughtData);

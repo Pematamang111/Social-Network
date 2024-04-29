@@ -4,7 +4,7 @@ const { Thought, User } = require('../models');
 module.exports = {
     getAllThoughts: async (req, res) => {
         try { 
-            const thoughts = await Thought.find().populate('users');
+            const thoughts = await Thought.find();
             res.json(thoughts);
         } catch (error) {
             res.status(500).json(error);
@@ -59,7 +59,7 @@ module.exports = {
                 return res.status(404).json({ message: 'no thought found with this Id'})
             }
 
-         await User.deleteMany({ _id: { $in: thought.username } });
+         await User.deleteMany({ _id: { $in: thought.user } });
             res.json({ message: 'User and thought has been deleted.' })
         } catch (error) {
             res.status(500).json(error);
